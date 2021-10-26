@@ -11,6 +11,12 @@ Additional links:
 * [Weaviate documentation](https://www.semi.technology/developers/weaviate/current/)
 * [Weaviate on Github](https://github.com/semi-technologies/weaviate)
 * [PyTorch-BigGraph search with the Weaviate vector search engine (similar project)](https://github.com/semi-technologies/PyTorch-BigGraph-search-with-Weaviate)
+
+### Acknowledgments
+
+* The [`t2v-transformers` module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [multi-qa-MiniLM-L6-cos-v1]() transformer created by the [SBERT team](https://www.sbert.net/)
+* Thanks to the team of [Obsei](https://github.com/obsei/obsei) for sharing the idea on our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) channel
+
 ### Stats
 
 | description | value |
@@ -26,11 +32,6 @@ Additional links:
 | Dataset size | `122GB` |
 | Average query time for 25 nearest neighbors _without_ scalar filter | `...` |
 | Average query time for 25 nearest neighbors _with_ scalar filter | `...` |
-
-### Acknowledgments
-
-* The [`t2v-transformers` module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [multi-qa-MiniLM-L6-cos-v1]() transformer created by the [SBERT team](https://www.sbert.net/)
-* Thanks to the team of [Obsei](https://github.com/obsei/obsei) for sharing the idea on our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) channel
 
 ## Import
 
