@@ -1,0 +1,2 @@
+weaviate_client==3.2.0
+loguru==0.5.3
