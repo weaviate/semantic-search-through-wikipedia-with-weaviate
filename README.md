@@ -28,12 +28,10 @@ Additional links:
 | Machine for inference | `12 CPU – 100 GB RAM – 200Gb SSD` |  
 | Weaviate version | `v1.7.2` |
 | Dataset size | `122GB` |
-| Average query time for 25 nearest neighbors _without_ scalar filter | `...` |
-| Average query time for 25 nearest neighbors _with_ scalar filter | `...` |
 
 ## Import
 
-There are 3-steps in the import process, you can also skip the first two and directly import the backup.
+There are 3-steps in the import process. **You can also skip the first two and [directly import the backup](#step-3-query-the-dataset)**
 
 ### Step 1: Process the Wikipedia dump
 
@@ -65,14 +63,6 @@ $ gunzip wikipedia-en-articles.json.gz
 ### Step 2: Import the dataset and vectorized the content
 
 Weaviate takes care of the complete import and vectorization process but you'll need some GPU and CPU muscle to achieve this. Important to bear in mind is that this is _only_ needed on import time. If you don't want to spend the resources on doing the import, you can go to the next step in the process and download the Weaviate backup. The machine needed for inference is way cheaper.
-
-Set up we used on GCP:
-
-| description | value |
-| --- | --- |
-| CPUs | `96` |
-| Memory | `...G` |
-| SSD Disk| `...G` |
 
 We will be using a single Weaviate instance, but four Tesla T4 GPUs that we will stuff with 8 models each. To efficiently do this, we are going to add an NGINX load balancer between Weaviate and the vectorizers.
 
@@ -109,7 +99,7 @@ You can now run the dataset! We would advise running it with 1 GPU, but you can 
 
 Note that Weaviate needs some time to import the backup (if you use the setup mentioned above +/- 15min). You can see the status of the backup in the docker logs of the Weaviate container.
 
-```
+```sh
 # clone this repository
 $ git clone https://github.com/semi-technologies/semantic-search-through-Wikipedia-with-Weaviate/
 # go into the backup dir
