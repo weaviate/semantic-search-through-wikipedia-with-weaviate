@@ -86,14 +86,13 @@ $ nohup python3 -u import.py &
 
 After the import is done, you can shut down the Docker containers by running `docker-compose down`.
 
-You can also download the Weaviate backup based on the truthy from October 9th, 2021, and skip the above steps
-
-```sh
-$ wget ...
-$ gunzip ...
-```
-
 ### Step 3: Query the dataset!
+
+{% note %}
+
+**Note:** Start here if you want to work with a backup of the dataset without importing it
+
+{% endnote %}
 
 You can now run the dataset! We would advise running it with 1 GPU, but you can also run it on CPU only (without Q&A). The machine you need for inference is significantly smaller.
 
