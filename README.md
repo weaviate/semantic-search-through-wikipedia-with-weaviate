@@ -179,6 +179,42 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
 }
 ```
 
+```graphql
+##
+# Mixing scalar queries and semantic search queries
+##
+{
+  Get {
+    Paragraph(
+      ask: {
+        question: "What was Michael Brecker's first saxophone?"
+        properties: ["content"]
+      }
+      where: {
+        operator: Equal
+        path: ["inArticle", "Article", "title"]
+        valueString: "Michael Brecker"
+      }
+      limit: 1
+    ) {
+      _additional {
+        answer {
+          result
+        }
+      }
+      content
+      order
+      title
+      inArticle {
+        ... on Article {
+          title
+        }
+      }
+    }
+  }
+}
+```
+
 ## Video
 
 [VIDEO]
