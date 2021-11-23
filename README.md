@@ -88,11 +88,9 @@ After the import is done, you can shut down the Docker containers by running `do
 
 ### Step 3: Query the dataset!
 
-{% note %}
-
-**Note:** Start here if you want to work with a backup of the dataset without importing it
-
-{% endnote %}
+> 👍 NOTE
+> 
+> Start here if you want to work with a backup of the dataset without importing it
 
 You can now run the dataset! We would advise running it with 1 GPU, but you can also run it on CPU only (without Q&A). The machine you need for inference is significantly smaller.
 
