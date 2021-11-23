@@ -179,21 +179,22 @@ def import_data_without_crefs(wiki_data_file):
                     # skip if it is a standard wiki category
                     if ":" in article_obj[2]:
                         continue
-                    # add the article obj
-                    client.data_object.create(article_obj[0], article_obj[1], article_obj[2])
-                    counter += 1
-                    # add the paragraphs
-                    for item in add_paragraph_to_batch(parsed_line):
-                        # add data object to batch
-                        client.batch.add_data_object(item[0], item[1], item[2])
-                        # add ref to batch
-                        client.batch.add_reference(article_obj[2], "Article", "hasParagraphs", item[2])
-                        logger.info("Imported (" + str(counter) + " / " + str(counter_article) + ") – " + parsed_line["title"] + " with # of paragraphs " + str(len(parsed_line["paragraphs"])))
+                    else:
+                        # add the article obj
+                        client.data_object.create(article_obj[0], article_obj[1], article_obj[2])
                         counter += 1
-                        if (counter % 400) == 0:
-                            result = client.batch.create_objects()
-                            result_refs = client.batch.create_references()
-                            handle_results(result)
+                        # add the paragraphs
+                        for item in add_paragraph_to_batch(parsed_line):
+                            # add data object to batch
+                            client.batch.add_data_object(item[0], item[1], item[2])
+                            # add ref to batch
+                            client.batch.add_reference(article_obj[2], "Article", "hasParagraphs", item[2])
+                            logger.info("Imported (" + str(counter) + " / " + str(counter_article) + ") – " + parsed_line["title"] + " with # of paragraphs " + str(len(parsed_line["paragraphs"])))
+                            counter += 1
+                            if (counter % 500) == 0:
+                                result = client.batch.create_objects()
+                                result_refs = client.batch.create_references()
+                                handle_results(result)
                 except Exception as e:
                     counter += 1
                     logger.debug("Skipping: " + article_obj[2])
@@ -210,14 +211,15 @@ def import_data_crefs(wiki_data_file):
             # skip if it is a standard wiki category
             if ":" in parsed_line["title"]:
                 continue
-            for cref in parsed_line["crefs"]:
-                article_uuid = str(uuid3(NAMESPACE_DNS, parsed_line["title"].replace(" ", "_")))
-                link_uuid = str(uuid3(NAMESPACE_DNS, cref))
-                with client.batch(batch_size=10, dynamic=True) as batch:
-                    results = client.batch.add_reference(article_uuid, "Article", "linksToArticles", link_uuid)
-                    handle_results(results)
-                counter += 1
-            logger.info("Crefs set (" + str(counter) + ") – " + parsed_line["title"])
+            else:
+                for cref in parsed_line["crefs"]:
+                    article_uuid = str(uuid3(NAMESPACE_DNS, parsed_line["title"].replace(" ", "_")))
+                    link_uuid = str(uuid3(NAMESPACE_DNS, cref))
+                    with client.batch(batch_size=12000, dynamic=True) as batch:
+                        results = client.batch.add_reference(article_uuid, "Article", "linksToArticles", link_uuid)
+                        handle_results(results)
+                    counter += 1
+                logger.info("Crefs set (" + str(counter) + ") – " + parsed_line["title"])
             
 
 

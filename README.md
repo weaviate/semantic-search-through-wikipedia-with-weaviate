@@ -23,11 +23,9 @@ Additional links:
 | --- | --- |
 | Articles imported | `11.348.257` |
 | Paragaphs imported | `27.377.159` | 
-| Graph relations | `...` |
+| Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy October 9th, 2021` | 
-| Import time | `...` |
-| Machine for import | `...` |
-| Machine for inference | `...` |  
+| Machine for inference | `12 CPU – 100 GB RAM – 200Gb SSD` |  
 | Weaviate version | `v1.7.2` |
 | Dataset size | `122GB` |
 | Average query time for 25 nearest neighbors _without_ scalar filter | `...` |
@@ -98,7 +96,7 @@ $ nohup python3 -u import.py &
 
 After the import is done, you can shut down the Docker containers by running `docker-compose down`.
 
-You can also download the Weaviate backup based on the truthhy from October 9th, 2021, and skip the above steps
+You can also download the Weaviate backup based on the truthy from October 9th, 2021, and skip the above steps
 
 ```sh
 $ wget ...
@@ -109,28 +107,37 @@ $ gunzip ...
 
 You can now run the dataset! We would advise running it with 1 GPU, but you can also run it on CPU only (without Q&A). The machine you need for inference is significantly smaller.
 
-Set up we used on GCP:
+Note that Weaviate needs some time to import the backup (if you use the setup mentioned above +/- 15min). You can see the status of the backup in the docker logs of the Weaviate container.
 
-| description | value |
-| --- | --- |
-| CPUs | `8` |
-| Memory | `...G` |
-| SSD Disk| `...G` |
-
-Note that Weaviate needs some time to import the backup! You can see the status of the backup in the docker logs of the Weaviate container.
+```
+# clone this repository
+$ git clone https://github.com/semi-technologies/semantic-search-through-Wikipedia-with-Weaviate/
+# go into the backup dir
+$ cd step-3
+# download the Weaviate backup
+$ curl https://storage.googleapis.com/semi-technologies-public-data/weaviate-1.8.0-rc.2-backup-wikipedia-py-en-multi-qa-MiniLM-L6-cos.tar.gz -O
+# untar the backup (112G unpacked)
+$ tar -xvzf weaviate-1.8.0-rc.2-backup-wikipedia-py-en-multi-qa-MiniLM-L6-cos.tar.gz
+# get the unpacked directory
+$ echo $(pwd)/var/weaviate
+# use the above result (e.g., /home/foobar/weaviate-disk/var/weaviate)
+#   update volumes in docker-compose.yml (NOT PERSISTENCE_DATA_PATH!) to the above output
+#   (e.g., PERSISTENCE_DATA_PATH: '/home/foobar/weaviate-disk/var/weaviate:/var/lib/weaviate')
+#   With 16 CPUs this process takes about 12 to 15 minutes
+```
 
 #### With GPU
 
 ```sh
 $ cd step-3
-$ docker-compose-up -f docker-compose-gpu.yml -d
+$ docker-compose -f docker-compose-gpu.yml up -d
 ```
 
 #### Without GPU
 
 ```sh
 $ cd step-3
-$ docker-compose-up -f docker-compose-no-gpu.yml -d
+$ docker-compose -f docker-compose-no-gpu.yml up -d
 ```
 
 ## Example queries

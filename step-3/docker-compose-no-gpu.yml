@@ -9,7 +9,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:1.7.2
+    image: semitechnologies/weaviate:latest@sha256:d2d5352d1264e8bbca0523da6267a98c4f966ac0ea87d35bedaef9a997280cc8
     ports:
       - 8080:8080
     restart: on-failure:0
@@ -25,19 +25,10 @@ services:
       DEFAULT_VECTORIZER_MODULE: 'text2vec-transformers'
       ENABLE_MODULES: 'text2vec-transformers'
       CLUSTER_HOSTNAME: '36e2f235062d'
-  ##
-  # Load in all GPUs
-  ##
+      LOG_LEVEL: 'debug'
   t2v-transformers-01-001:
     image: semitechnologies/transformers-inference:sentence-transformers-multi-qa-MiniLM-L6-cos-v1-1.4.2
     restart: always
     environment:
       ENABLE_CUDA: '0'
-    #   NVIDIA_VISIBLE_DEVICES: '0' # <== set the GPU to use. 0 = 1st GPU, 1 = 2nd, etc
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #       - capabilities: 
-    #         - 'gpu'
 ...
