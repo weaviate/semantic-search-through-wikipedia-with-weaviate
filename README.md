@@ -129,7 +129,55 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
 
 ## Example queries
 
-...
+```graphql
+##
+# Using the Q&A module
+##
+{
+  Get {
+    Paragraph(
+      ask: {
+        question: "Where is the States General of The Netherlands located?"
+        properties: ["content"]
+      }
+      limit: 1
+    ) {
+      _additional {
+        answer {
+          result
+        }
+      }
+      content
+      title
+    }
+  }
+}
+```
+
+```graphql
+##
+# Generic question about Italian food
+##
+{
+  Get {
+    Paragraph(
+      nearText: {
+        concepts: ["Italian food"]
+      }
+      limit: 50
+    ) {
+      content
+      order
+      title
+      inArticle {
+        ... on Article {
+          title
+        }
+      }
+    }
+  }
+}
+```
 
 ## Video
 
