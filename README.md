@@ -107,10 +107,15 @@ $ curl https://storage.googleapis.com/semi-technologies-public-data/weaviate-1.8
 $ tar -xvzf weaviate-1.8.0-rc.2-backup-wikipedia-py-en-multi-qa-MiniLM-L6-cos.tar.gz
 # get the unpacked directory
 $ echo $(pwd)/var/weaviate
-# use the above result (e.g., /home/foobar/weaviate-disk/var/weaviate)
+# use the above result (e.g., /home/foobar/var/weaviate)
 #   update volumes in docker-compose.yml (NOT PERSISTENCE_DATA_PATH!) to the above output
-#   (e.g., PERSISTENCE_DATA_PATH: '/home/foobar/weaviate-disk/var/weaviate:/var/lib/weaviate')
-#   With 16 CPUs this process takes about 12 to 15 minutes
+#   (e.g., 
+#     volumes:
+#       - /home/foobar/var/weaviate:/var/lib/weaviate
+#   )    
+#
+#   With 12 CPUs this process takes about 12 to 15 minutes to complete.
+#   The Weaviate instance will be available directly, but the cache is pre-filling in this timeframe
 ```
 
 #### With GPU
@@ -131,7 +136,7 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
 
 ```graphql
 ##
-# Using the Q&A module
+# Using the Q&A module I
 ##
 {
   Get {
@@ -145,6 +150,33 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
       _additional {
         answer {
           result
+          certainty
+        }
+      }
+      content
+      title
+    }
+  }
+}
+```
+
+```graphql
+##
+# Using the Q&A module II
+##
+{
+  Get {
+    Paragraph(
+      ask: {
+        question: "What was the population of the Dutch city Utrecht in 2019?"
+        properties: ["content"]
+      }
+      limit: 1
+    ) {
+      _additional {
+        answer {
+          result
+          certainty
         }
       }
       content
