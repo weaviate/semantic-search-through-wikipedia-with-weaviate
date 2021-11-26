@@ -33,7 +33,7 @@ Additional links:
 
 ## Import
 
-There are 3-steps in the import process. **You can also skip the first two and [directly import the backup](#step-3-query-the-dataset)**
+There are 3-steps in the import process. **You can also skip the first two and [directly import the backup](#step-3-load-from-backup)**
 
 ### Step 1: Process the Wikipedia dump
 
