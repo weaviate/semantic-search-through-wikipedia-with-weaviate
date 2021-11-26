@@ -31,6 +31,10 @@ Additional links:
 | Weaviate version | `v1.7.2` |
 | Dataset size | `122GB` |
 
+### Example queries
+
+![Example semantic search queries in Weaviate's GraphQL interface](https://www.semi.technology/img/wikipedia-demo.gif)
+
 ## Import
 
 There are 3-steps in the import process. **You can also skip the first two and [directly import the backup](#step-3-load-from-backup)**
