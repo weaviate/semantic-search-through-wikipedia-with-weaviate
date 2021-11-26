@@ -1,0 +1,34 @@
+---
+version: '3.4'
+services:
+  weaviate:
+    command:
+      - --host
+      - 0.0.0.0
+      - --port
+      - '8080'
+      - --scheme
+      - http
+    image: semitechnologies/weaviate:latest@sha256:d2d5352d1264e8bbca0523da6267a98c4f966ac0ea87d35bedaef9a997280cc8
+    ports:
+      - 8080:8080
+    restart: on-failure:0
+    volumes:
+      - /var/weaviate:/var/lib/weaviate
+    depends_on:
+      - t2v-transformers-01-001
+    environment:
+      TRANSFORMERS_INFERENCE_API: 'http://t2v-transformers-01-001:8080'
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'text2vec-transformers'
+      ENABLE_MODULES: 'text2vec-transformers'
+      CLUSTER_HOSTNAME: '36e2f235062d'
+      LOG_LEVEL: 'debug'
+  t2v-transformers-01-001:
+    image: semitechnologies/transformers-inference:qna-transformers:bert-large-uncased-whole-word-masking-finetuned-squad
+    restart: always
+    environment:
+      ENABLE_CUDA: '0'
+...
