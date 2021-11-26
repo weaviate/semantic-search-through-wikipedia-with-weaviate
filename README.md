@@ -258,3 +258,35 @@ _"What was Michael Brecker's first saxophone?"_ in the Wikipedia article about _
   }
 }
 ```
+
+Get all Wikipedia graph connections for _"jazz saxophone players"_ [try it live!](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20Mixing%20semantic%20search%20queries%20with%20graph%20connections%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20nearText%3A%20%7B%0A%20%20%20%20%20%20%20%20concepts%3A%20%5B%22jazz%20saxophone%20players%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%2025%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20order%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20inArticle%20%7B%0A%20%20%20%20%20%20%20%20...%20on%20Article%20%7B%20%23%20%3C%3D%3D%20Graph%20connection%20I%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20hasParagraphs%20%7B%20%23%20%3C%3D%3D%20Graph%20connection%20II%0A%20%20%20%20%20%20%20%20%20%20%20%20...%20on%20Paragraph%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
+
+```graphql
+##
+# Mixing semantic search queries with graph connections
+##
+{
+  Get {
+    Paragraph(
+      nearText: {
+        concepts: ["jazz saxophone players"]
+      }
+      limit: 25
+    ) {
+      content
+      order
+      title
+      inArticle {
+        ... on Article { # <== Graph connection I
+          title
+          hasParagraphs { # <== Graph connection II
+            ... on Paragraph {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
