@@ -16,7 +16,7 @@ Additional links:
 
 ### Acknowledgments
 
-* The [`t2v-transformers` module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [multi-qa-MiniLM-L6-cos-v1]() transformer created by the [SBERT team](https://www.sbert.net/)
+* The [`t2v-transformers` module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [sentence-transformers-multi-qa-MiniLM-L6-cos](./step-3/docker-compose-gpu.yml#L32) transformer created by the [SBERT team](https://www.sbert.net/)
 * Thanks to the team of [Obsei](https://github.com/obsei/obsei) for sharing the idea on our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) channel
 
 ### Stats
