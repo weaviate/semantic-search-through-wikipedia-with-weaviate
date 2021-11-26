@@ -8,9 +8,8 @@ If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com
 
 Additional links:
 
-* [🔥 Live Demo HTML front-end](http://biggraph-wikidata-in-weaviate.vectors.network/)
-* [🔥 Live Demo Weaviate GraphQL front-end](http://console.semi.technology/console/query#weaviate_uri=http://biggraph-wikidata-in-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20The%20one%20and%20only%20Stanley%20Kubrick%20%F0%9F%9A%80%E2%AC%9B%F0%9F%90%92%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Entity(%0A%20%20%20%20%20%20nearObject%3A%20%7Bid%3A%20%227392bc9d-a3c0-4738-9d25-a473245971c5%22%2C%20certainty%3A%200.75%7D%0A%20%20%20%20%20%20limit%3A%2024%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20url%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20Label(nearObject%3A%20%7Bid%3A%20%227392bc9d-a3c0-4738-9d25-a473245971c5%22%2C%20certainty%3A%200.8%7D)%20%7B%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20language%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A)
-* [🔥 Live Demo Weaviate RESTful Endpoint](http://biggraph-wikidata-in-weaviate.api.vectors.network:8080/v1/schema)
+* [💡 Live Demo Weaviate GraphQL front-end](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20ask%3A%20%7B%0A%20%20%20%20%20%20%20%20question%3A%20%22Who%20was%20Stanley%20Kubrick%3F%22%0A%20%20%20%20%20%20%20%20properties%3A%20%5B%22content%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%201%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20order%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20inArticle%20%7B%0A%20%20%20%20%20%20%20%20...%20on%20Article%20%7B%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20answer%20%7B%0A%20%20%20%20%20%20%20%20%20%20result%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
+* [💡 Live Demo Weaviate RESTful Endpoint](http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080/v1/schema)
 * [Weaviate documentation](https://www.semi.technology/developers/weaviate/current/)
 * [Weaviate on Github](https://github.com/semi-technologies/weaviate)
 * [PyTorch-BigGraph search with the Weaviate vector search engine (similar project)](https://github.com/semi-technologies/PyTorch-BigGraph-search-with-Weaviate)
@@ -139,6 +138,8 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
 
 ## Example queries
 
+_Where is the States General of The Netherlands located?_ [try it live!](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20Using%20the%20Q%26A%20module%20I%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20ask%3A%20%7B%0A%20%20%20%20%20%20%20%20question%3A%20%22Where%20is%20the%20States%20General%20of%20The%20Netherlands%20located%3F%22%0A%20%20%20%20%20%20%20%20properties%3A%20%5B%22content%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%201%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20answer%20%7B%0A%20%20%20%20%20%20%20%20%20%20result%0A%20%20%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
+
 ```graphql
 ##
 # Using the Q&A module I
@@ -164,6 +165,8 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
   }
 }
 ```
+
+_What was the population of the Dutch city Utrecht in 2019?_ [try it live!](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20Using%20the%20Q%26A%20module%20II%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20ask%3A%20%7B%0A%20%20%20%20%20%20%20%20question%3A%20%22What%20was%20the%20population%20of%20the%20Dutch%20city%20Utrecht%20in%202019%3F%22%0A%20%20%20%20%20%20%20%20properties%3A%20%5B%22content%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%201%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20answer%20%7B%0A%20%20%20%20%20%20%20%20%20%20result%0A%20%20%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20title%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
 ```graphql
 ##
@@ -191,6 +194,8 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
 }
 ```
 
+About the concept _Italian food_ [try it live!](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20Generic%20question%20about%20Italian%20food%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20nearText%3A%20%7B%0A%20%20%20%20%20%20%20%20concepts%3A%20%5B%22Italian%20food%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%2050%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20order%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20inArticle%20%7B%0A%20%20%20%20%20%20%20%20...%20on%20Article%20%7B%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
+
 ```graphql
 ##
 # Generic question about Italian food
@@ -215,6 +220,8 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
   }
 }
 ```
+
+_What was Michael Brecker's first saxophone?_ in the Wikipedia article about _Michael Brecker_ [try it live!](http://console.semi.technology/console/query#weaviate_uri=http://semantic-search-wikipedia-with-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20Mixing%20scalar%20queries%20and%20semantic%20search%20queries%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Paragraph(%0A%20%20%20%20%20%20ask%3A%20%7B%0A%20%20%20%20%20%20%20%20question%3A%20%22What%20was%20Michael%20Brecker's%20first%20saxophone%3F%22%0A%20%20%20%20%20%20%20%20properties%3A%20%5B%22content%22%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20where%3A%20%7B%0A%20%20%20%20%20%20%20%20operator%3A%20Equal%0A%20%20%20%20%20%20%20%20path%3A%20%5B%22inArticle%22%2C%20%22Article%22%2C%20%22title%22%5D%0A%20%20%20%20%20%20%20%20valueString%3A%20%22Michael%20Brecker%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20limit%3A%201%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20answer%20%7B%0A%20%20%20%20%20%20%20%20%20%20result%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20order%0A%20%20%20%20%20%20title%0A%20%20%20%20%20%20inArticle%20%7B%0A%20%20%20%20%20%20%20%20...%20on%20Article%20%7B%0A%20%20%20%20%20%20%20%20%20%20title%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
 ```graphql
 ##
@@ -251,7 +258,3 @@ $ docker-compose -f docker-compose-no-gpu.yml up -d
   }
 }
 ```
-
-## Video
-
-[VIDEO]
