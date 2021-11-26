@@ -8,6 +8,9 @@ If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com
 
 Additional links:
 
+* [🔥 Live Demo HTML front-end](http://biggraph-wikidata-in-weaviate.vectors.network/)
+* [🔥 Live Demo Weaviate GraphQL front-end](http://console.semi.technology/console/query#weaviate_uri=http://biggraph-wikidata-in-weaviate.api.vectors.network:8080&graphql_query=%23%23%0A%23%20The%20one%20and%20only%20Stanley%20Kubrick%20%F0%9F%9A%80%E2%AC%9B%F0%9F%90%92%0A%23%23%0A%7B%0A%20%20Get%20%7B%0A%20%20%20%20Entity(%0A%20%20%20%20%20%20nearObject%3A%20%7Bid%3A%20%227392bc9d-a3c0-4738-9d25-a473245971c5%22%2C%20certainty%3A%200.75%7D%0A%20%20%20%20%20%20limit%3A%2024%0A%20%20%20%20)%20%7B%0A%20%20%20%20%20%20url%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20Label(nearObject%3A%20%7Bid%3A%20%227392bc9d-a3c0-4738-9d25-a473245971c5%22%2C%20certainty%3A%200.8%7D)%20%7B%0A%20%20%20%20%20%20content%0A%20%20%20%20%20%20language%0A%20%20%20%20%20%20_additional%20%7B%0A%20%20%20%20%20%20%20%20id%0A%20%20%20%20%20%20%20%20certainty%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A)
+* [🔥 Live Demo Weaviate RESTful Endpoint](http://biggraph-wikidata-in-weaviate.api.vectors.network:8080/v1/schema)
 * [Weaviate documentation](https://www.semi.technology/developers/weaviate/current/)
 * [Weaviate on Github](https://github.com/semi-technologies/weaviate)
 * [PyTorch-BigGraph search with the Weaviate vector search engine (similar project)](https://github.com/semi-technologies/PyTorch-BigGraph-search-with-Weaviate)
@@ -25,7 +28,7 @@ Additional links:
 | Paragaphs imported | `27.377.159` | 
 | Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy October 9th, 2021` | 
-| Machine for inference | `12 CPU – 100 GB RAM – 200Gb SSD` |  
+| Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
 | Weaviate version | `v1.7.2` |
 | Dataset size | `122GB` |
 
@@ -74,8 +77,10 @@ We will be using a single Weaviate instance, but four Tesla T4 GPUs that we will
 * The import scripts assumes that the JSON file is called `wikipedia-en-articles.json`.
 
 ```sh
+$ cd step-2
 $ docker-compose up -d
-$ import.py
+$ pip3 install -r requirements.txt
+$ python3 import.py
 ```
 
 The import takes a few hours, so probably you want to do something like:
@@ -86,10 +91,10 @@ $ nohup python3 -u import.py &
 
 After the import is done, you can shut down the Docker containers by running `docker-compose down`.
 
-### Step 3: Query the dataset!
+You can now query the dataset!
 
-> 👍 NOTE
-> 
+### Step 3: Load from backup
+
 > Start here if you want to work with a backup of the dataset without importing it
 
 You can now run the dataset! We would advise running it with 1 GPU, but you can also run it on CPU only (without Q&A). The machine you need for inference is significantly smaller.
