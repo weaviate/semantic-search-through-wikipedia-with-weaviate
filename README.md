@@ -4,7 +4,7 @@
 
 In this repository, you'll find the 3-steps needed to replicate the import, but there are also downlaods available to skip the first two steps.
 
-If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com/semi-technologies/weaviate/stargazers) is appreciated.
+If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com/semi-technologies/weaviate/stargazers) or joining our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) is appreciated.
 
 Additional links:
 
