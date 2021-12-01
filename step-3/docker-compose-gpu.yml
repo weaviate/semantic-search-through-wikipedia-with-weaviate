@@ -9,7 +9,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:latest@sha256:d2d5352d1264e8bbca0523da6267a98c4f966ac0ea87d35bedaef9a997280cc8
+    image: semitechnologies/weaviate:1.8.0
     ports:
       - 8080:8080
     restart: on-failure:0
