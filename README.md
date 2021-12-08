@@ -15,6 +15,15 @@ Additional links:
 * [PyTorch-BigGraph search with the Weaviate vector search engine (similar project)](https://github.com/semi-technologies/PyTorch-BigGraph-search-with-Weaviate)
 * [[BLOG] Semantic search through Wikipedia with Weaviate (GraphQL, Sentence-BERT, and BERT Q&A)](https://towardsdatascience.com/semantic-search-through-wikipedia-with-weaviate-graphql-sentence-bert-and-bert-q-a-3c8a5edeacf6)
 
+### Frequently Asked Questions
+
+| Q | A |
+| --- | --- |
+| Can I run this setup with a non-English dataset? | Yes – first, you need to go through the whole process (i.e., start with Step 1). E.g., if you want French, you can download the French version of Wikipedia like this: `https://dumps.wikimedia.org/frwiki/latest/frwiki-latest-pages-articles.xml.bz2`  (note that `en` if replaced with `fr`). Next, you need to change the Weaviate vectorizer module to an appropriate language. You can choose an OOTB language model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-1-use-a-pre-built-transformer-model-container) or add your own model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-2-use-any-publically-available-huggingface-model). |
+| Can I run this setup with all languages? | Yes – you can follow two strategies. You can use a multilingual model or extend the Weaviate schema to store different languages with different classes. The latter has the upside that you can use multiple vectorizers (e.g., per language) or a more elaborate sharding strategy. But in the end, both are possible. | 
+| Can I run this with Kubernetes? | Of course, you need to start from Step 2. But if you follow the Kubernetes set up in the [docs](https://www.semi.technology/developers/weaviate/current/getting-started/installation.html#kubernetes-k8s) you should be good :-) |
+| Can I run this with my own data? | Yes! This is just a demo dataset, you can use any data you have and like. Go to the [Weaviate docs](https://www.semi.technology/developers/weaviate/current/) or join our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) to get started. |
+
 ### Acknowledgments
 
 * The [`t2v-transformers` module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [sentence-transformers-multi-qa-MiniLM-L6-cos](./step-3/docker-compose-gpu.yml#L32) transformer created by the [SBERT team](https://www.sbert.net/)
