@@ -14,6 +14,7 @@ Additional links:
 * [Weaviate on Github](https://github.com/semi-technologies/weaviate)
 * [PyTorch-BigGraph search with the Weaviate vector search engine (similar project)](https://github.com/semi-technologies/PyTorch-BigGraph-search-with-Weaviate)
 * [[BLOG] Semantic search through Wikipedia with Weaviate (GraphQL, Sentence-BERT, and BERT Q&A)](https://towardsdatascience.com/semantic-search-through-wikipedia-with-weaviate-graphql-sentence-bert-and-bert-q-a-3c8a5edeacf6)
+* [[VIDEO] Wikipedia Vector Search Demo with Weaviate (Henry AI Labs)](https://www.youtube.com/watch?v=IGB8vjCuay0)
 
 ### Frequently Asked Questions
 
