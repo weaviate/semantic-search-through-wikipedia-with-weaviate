@@ -24,6 +24,7 @@ Additional links:
 | Can I run this setup with all languages? | Yes – you can follow two strategies. You can use a multilingual model or extend the Weaviate schema to store different languages with different classes. The latter has the upside that you can use multiple vectorizers (e.g., per language) or a more elaborate sharding strategy. But in the end, both are possible. | 
 | Can I run this with Kubernetes? | Of course, you need to start from Step 2. But if you follow the Kubernetes set up in the [docs](https://www.semi.technology/developers/weaviate/current/getting-started/installation.html#kubernetes-k8s) you should be good :-) |
 | Can I run this with my own data? | Yes! This is just a demo dataset, you can use any data you have and like. Go to the [Weaviate docs](https://www.semi.technology/developers/weaviate/current/) or join our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) to get started. |
+| Can I run the dataset without the Q&A module? | Yes, see [this](https://github.com/semi-technologies/semantic-search-through-wikipedia-with-weaviate/issues/2#issuecomment-995595909) answer |
 
 ### Acknowledgments
 
