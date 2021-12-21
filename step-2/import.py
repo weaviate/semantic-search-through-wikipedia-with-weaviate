@@ -57,7 +57,10 @@ def create_weaviate_schema(client):
                 "description": "A wiki paragraph",
                 "vectorIndexConfig": {
                     "vectorCacheMaxObjects": 150000000000,
-                    "ef": 2500
+                    "efConstruction": 1000,
+                    "maxConnections": 16,
+                    "ef": 1000,
+                    "binaryMode": True
                 },
                 "properties": [
                     {
