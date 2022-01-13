@@ -1,8 +1,8 @@
 # Semantic search through Wikipedia with the Weaviate vector search engine
 
-[Weaviate](https://www.semi.technology/developers/weaviate/current/) is an open source vector search engine with build-in vectorization and question answering modules. We imported the complete English language Wikipedia article dataset into a single Weaviate instance to conduct semantic search queries through the Wikipedia articles, besides this, we've made all the graph relations between the articles too. We have made the import scripts, pre-processed articles, and backup available so that you can run the complete setup yourself. 
+[Weaviate](https://www.semi.technology/developers/weaviate/current/) is an open source vector search engine with built-in vectorization and question-answering modules. We imported the complete English language Wikipedia article dataset into a single Weaviate instance to conduct semantic search queries through the Wikipedia articles. Besides this, we've made all the graph relations between the articles too. We have made the import scripts, pre-processed articles, and backup available so that you can run the complete setup yourself. 
 
-In this repository, you'll find the 3-steps needed to replicate the import, but there are also downlaods available to skip the first two steps.
+In this repository, you'll find the 3-steps needed to replicate the import, but there are also downloads available to skip the first two steps.
 
 If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com/semi-technologies/weaviate/stargazers) or joining our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) is appreciated.
 
@@ -20,7 +20,7 @@ Additional links:
 
 | Q | A |
 | --- | --- |
-| Can I run this setup with a non-English dataset? | Yes – first, you need to go through the whole process (i.e., start with Step 1). E.g., if you want French, you can download the French version of Wikipedia like this: `https://dumps.wikimedia.org/frwiki/latest/frwiki-latest-pages-articles.xml.bz2`  (note that `en` if replaced with `fr`). Next, you need to change the Weaviate vectorizer module to an appropriate language. You can choose an OOTB language model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-1-use-a-pre-built-transformer-model-container) or add your own model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-2-use-any-publically-available-huggingface-model). |
+| Can I run this setup with a non-English dataset? | Yes – first, you need to go through the whole process (i.e., start with Step 1). E.g., if you want French, you can download the French version of Wikipedia like this: `https://dumps.wikimedia.org/frwiki/latest/frwiki-latest-pages-articles.xml.bz2`  (note that `en` is replaced with `fr`). Next, you need to change the Weaviate vectorizer module to an appropriate language. You can choose an OOTB language model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-1-use-a-pre-built-transformer-model-container) or add your own model as outlined [here](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html#option-2-use-any-publically-available-huggingface-model). |
 | Can I run this setup with all languages? | Yes – you can follow two strategies. You can use a multilingual model or extend the Weaviate schema to store different languages with different classes. The latter has the upside that you can use multiple vectorizers (e.g., per language) or a more elaborate sharding strategy. But in the end, both are possible. | 
 | Can I run this with Kubernetes? | Of course, you need to start from Step 2. But if you follow the Kubernetes set up in the [docs](https://www.semi.technology/developers/weaviate/current/getting-started/installation.html#kubernetes-k8s) you should be good :-) |
 | Can I run this with my own data? | Yes! This is just a demo dataset, you can use any data you have and like. Go to the [Weaviate docs](https://www.semi.technology/developers/weaviate/current/) or join our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) to get started. |
@@ -36,7 +36,7 @@ Additional links:
 | description | value |
 | --- | --- |
 | Articles imported | `11.348.257` |
-| Paragaphs imported | `27.377.159` | 
+| Paragraphs imported | `27.377.159` | 
 | Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy October 9th, 2021` | 
 | Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
@@ -89,7 +89,7 @@ We will be using a single Weaviate instance, but four Tesla T4 GPUs that we will
 * Every Weaviate [text2vec-module](https://www.semi.technology/developers/weaviate/current/modules/text2vec-transformers.html) will be using a [multi-qa-MiniLM-L6-cos-v1](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1) sentence transformer.
 * The volume is mounted _outside_ the container to `/var/weaviate`. This allows us to use this folder as a backup that can be imported in the next step.
 * Make sure to have Docker-compose _with_ GPU support [installed](https://gist.github.com/bobvanluijt/af6fe0fa392ca8f93e1fdc96fc1c86d8).
-* The import scripts assumes that the JSON file is called `wikipedia-en-articles.json`.
+* The import scripts assume that the JSON file is called `wikipedia-en-articles.json`.
 
 ```sh
 $ cd step-2
