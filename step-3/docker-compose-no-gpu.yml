@@ -9,7 +9,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:1.9.0
+    image: semitechnologies/weaviate:1.13.1
     ports:
       - 8080:8080
     restart: on-failure:0
@@ -27,7 +27,7 @@ services:
       CLUSTER_HOSTNAME: '36e2f235062d'
       LOG_LEVEL: 'debug'
   t2v-transformers-01-001:
-    image: semitechnologies/transformers-inference:qna-transformers:bert-large-uncased-whole-word-masking-finetuned-squad
+    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
     environment:
       ENABLE_CUDA: '0'

@@ -28,7 +28,7 @@ Additional links:
 
 ### Acknowledgments
 
-* The [`t2v-transformers` module](https://weaviate.io/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [sentence-transformers-multi-qa-MiniLM-L6-cos](./step-3/docker-compose-gpu.yml#L32) transformer created by the [SBERT team](https://www.sbert.net/)
+* The [`t2v-transformers` module](https://weaviate.io/developers/weaviate/current/modules/text2vec-transformers.html) used contains the [sentence-transformers-paraphrase-MiniLM-L6-v2](./step-3/docker-compose-gpu.yml#L32) transformer created by the [SBERT team](https://www.sbert.net/)
 * Thanks to the team of [Obsei](https://github.com/obsei/obsei) for sharing the idea on our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) channel
 
 ### Stats
@@ -38,9 +38,9 @@ Additional links:
 | Articles imported | `11.348.257` |
 | Paragaphs imported | `27.377.159` | 
 | Graph cross references | `125.447.595` |
-| Wikipedia version | `truthy October 9th, 2021` | 
+| Wikipedia version | `truthy May 15th, 2022` | 
 | Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
-| Weaviate version | `v1.7.2` |
+| Weaviate version | `v1.13.1` |
 | Dataset size | `122GB` |
 
 ### Example queries
@@ -60,7 +60,7 @@ Process from the Wikimedia dump:
 ```sh
 $ cd step-1
 $ wget https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
-$ bzip2 -d filename.bz2
+$ bunzip2 enwiki-latest-pages-articles.xml.bz2
 $ pip3 install -r requirements.txt
 $ python3 process.py
 ```
@@ -71,7 +71,7 @@ The process takes a few hours, so probably you want to do something like:
 $ nohup python3 -u process.py &
 ```
 
-You can also download the processed file from October 9th, 2021, and skip the above steps
+You can also download the processed file from May 15th, 2022, and skip the above steps
 
 ```sh
 $ wget https://storage.googleapis.com/semi-technologies-public-data/wikipedia-en-articles.json.gz
@@ -86,7 +86,7 @@ We will be using a single Weaviate instance, but four Tesla T4 GPUs that we will
 
 ![Weaviate Wikipedia import architecture with transformers and vectorizers](https://weaviate.io/img/4GPU-wikipedia-dataset.png)
 
-* Every Weaviate [text2vec-module](https://weaviate.io/developers/weaviate/current/modules/text2vec-transformers.html) will be using a [multi-qa-MiniLM-L6-cos-v1](https://huggingface.co/sentence-transformers/multi-qa-MiniLM-L6-cos-v1) sentence transformer.
+* Every Weaviate [text2vec-module](https://weaviate.io/developers/weaviate/current/modules/text2vec-transformers.html) will be using a [semitechnologies/tparaphrase-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/paraphrase-MiniLM-L6-v2) sentence transformer.
 * The volume is mounted _outside_ the container to `/var/weaviate`. This allows us to use this folder as a backup that can be imported in the next step.
 * Make sure to have Docker-compose _with_ GPU support [installed](https://gist.github.com/bobvanluijt/af6fe0fa392ca8f93e1fdc96fc1c86d8).
 * The import scripts assumes that the JSON file is called `wikipedia-en-articles.json`.

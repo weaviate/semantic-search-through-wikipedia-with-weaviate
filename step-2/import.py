@@ -66,7 +66,7 @@ def create_weaviate_schema(client):
                         ],
                         "description": "Title of the paragraph",
                         "name": "title",
-                        "indexInverted": False,
+                        "indexInverted": True,
                         "moduleConfig": {
                             "text2vec-transformers": {
                                 "skip": True,
@@ -80,7 +80,7 @@ def create_weaviate_schema(client):
                         ],
                         "description": "The content of the paragraph",
                         "name": "content",
-                        "indexInverted": False,
+                        "indexInverted": True,
                         "moduleConfig": {
                             "text2vec-transformers": {
                                 "skip": False,
