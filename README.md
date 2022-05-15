@@ -65,7 +65,7 @@ $ pip3 install -r requirements.txt
 $ python3 process.py
 ```
 
-The import takes a few hours, so probably you want to do something like:
+The process takes a few hours, so probably you want to do something like:
 
 ```sh
 $ nohup python3 -u process.py &
@@ -78,7 +78,7 @@ $ wget https://storage.googleapis.com/semi-technologies-public-data/wikipedia-en
 $ gunzip wikipedia-en-articles.json.gz
 ```
 
-### Step 2: Import the dataset and vectorized the content
+### Step 2: Import the dataset and vectorize the content
 
 Weaviate takes care of the complete import and vectorization process but you'll need some GPU and CPU muscle to achieve this. Important to bear in mind is that this is _only_ needed on import time. If you don't want to spend the resources on doing the import, you can go to the next step in the process and download the Weaviate backup. The machine needed for inference is way cheaper.
 
