@@ -35,8 +35,8 @@ Additional links:
 
 | description | value |
 | --- | --- |
-| Articles imported | `11.348.257` |
-| Paragaphs imported | `27.377.159` | 
+| Articles imported | `11.520.881` |
+| Paragaphs imported | `280.86.917` | 
 | Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy May 15th, 2022` | 
 | Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
@@ -61,6 +61,7 @@ Process from the Wikimedia dump:
 $ cd step-1
 $ wget https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-pages-articles.xml.bz2
 $ bunzip2 enwiki-latest-pages-articles.xml.bz2
+$ mv enwiki-latest-pages-articles.xml latest-pages-articles.xml
 $ pip3 install -r requirements.txt
 $ python3 process.py
 ```
@@ -74,15 +75,15 @@ $ nohup python3 -u process.py &
 You can also download the processed file from May 15th, 2022, and skip the above steps
 
 ```sh
-$ wget https://storage.googleapis.com/semi-technologies-public-data/wikipedia-en-articles.json.gz
-$ gunzip wikipedia-en-articles.json.gz
+$ curl -o wikipedia-en-articles.json.tar.gz https://storage.googleapis.com/semi-technologies-public-data/wikipedia-en-articles.json.tar.gz
+$ tar -xzvf wikipedia-en-articles.json.tar.gz
 ```
 
 ### Step 2: Import the dataset and vectorize the content
 
 Weaviate takes care of the complete import and vectorization process but you'll need some GPU and CPU muscle to achieve this. Important to bear in mind is that this is _only_ needed on import time. If you don't want to spend the resources on doing the import, you can go to the next step in the process and download the Weaviate backup. The machine needed for inference is way cheaper.
 
-We will be using a single Weaviate instance, but four Tesla T4 GPUs that we will stuff with 8 models each. To efficiently do this, we are going to add an NGINX load balancer between Weaviate and the vectorizers.
+We will be using a single Weaviate instance, but four Tesla P4 GPUs that we will stuff with 8 models each. To efficiently do this, we are going to add an NGINX load balancer between Weaviate and the vectorizers.
 
 ![Weaviate Wikipedia import architecture with transformers and vectorizers](https://weaviate.io/img/4GPU-wikipedia-dataset.png)
 
