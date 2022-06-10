@@ -40,7 +40,7 @@ Additional links:
 | Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy May 15th, 2022` | 
 | Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
-| Weaviate version | `v1.13.1` |
+| Weaviate version | `v1.13.2` |
 | Dataset size | `122GB` |
 
 ### Example queries
