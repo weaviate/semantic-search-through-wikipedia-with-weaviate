@@ -9,7 +9,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:1.13.1
+    image: semitechnologies/weaviate:1.13.2
     ports:
       - 8080:8080
     restart: on-failure:0
@@ -39,32 +39,24 @@ services:
       - t2v-transformers-01-004
       - t2v-transformers-01-005
       - t2v-transformers-01-006
-      - t2v-transformers-01-007
-      - t2v-transformers-01-008
       - t2v-transformers-02-001
       - t2v-transformers-02-002
       - t2v-transformers-02-003
       - t2v-transformers-02-004
       - t2v-transformers-02-005
       - t2v-transformers-02-006
-      - t2v-transformers-02-007
-      - t2v-transformers-02-008
       - t2v-transformers-03-001
       - t2v-transformers-03-002
       - t2v-transformers-03-003
       - t2v-transformers-03-004
       - t2v-transformers-03-005
       - t2v-transformers-03-006
-      - t2v-transformers-03-007
-      - t2v-transformers-03-008
       - t2v-transformers-04-001
       - t2v-transformers-04-002
       - t2v-transformers-04-003
       - t2v-transformers-04-004
       - t2v-transformers-04-005
       - t2v-transformers-04-006
-      - t2v-transformers-04-007
-      - t2v-transformers-04-008
   t2v-transformers-01-001:
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
@@ -126,30 +118,6 @@ services:
           - capabilities: 
             - 'gpu'
   t2v-transformers-01-006:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '0'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-01-007:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '0'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-01-008:
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
     environment:
@@ -233,30 +201,6 @@ services:
           devices:
           - capabilities: 
             - 'gpu'
-  t2v-transformers-02-007:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '1'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-02-008:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '1'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
   t2v-transformers-03-001:
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
@@ -329,30 +273,6 @@ services:
           devices:
           - capabilities: 
             - 'gpu'
-  t2v-transformers-03-007:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '2'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-03-008:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '2'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
   t2v-transformers-04-001:
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
@@ -414,30 +334,6 @@ services:
           - capabilities: 
             - 'gpu'
   t2v-transformers-04-006:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '3'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-04-007:
-    image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
-    restart: always
-    environment:
-      ENABLE_CUDA: '1'
-      NVIDIA_VISIBLE_DEVICES: '3'
-    deploy:
-      resources:
-        reservations:
-          devices:
-          - capabilities: 
-            - 'gpu'
-  t2v-transformers-04-008:
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-MiniLM-L6-v2
     restart: always
     environment:

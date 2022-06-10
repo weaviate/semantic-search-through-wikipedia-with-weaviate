@@ -77,6 +77,7 @@ You can also download the processed file from May 15th, 2022, and skip the above
 ```sh
 $ curl -o wikipedia-en-articles.json.tar.gz https://storage.googleapis.com/semi-technologies-public-data/wikipedia-en-articles.json.tar.gz
 $ tar -xzvf wikipedia-en-articles.json.tar.gz
+$ mv articles.json wikipedia-en-articles.json
 ```
 
 ### Step 2: Import the dataset and vectorize the content
@@ -123,9 +124,9 @@ $ git clone https://github.com/semi-technologies/semantic-search-through-Wikiped
 # go into the backup dir
 $ cd step-3
 # download the Weaviate backup
-$ curl https://storage.googleapis.com/semi-technologies-public-data/weaviate-1.8.0-rc.2-backup-wikipedia-py-en-multi-qa-MiniLM-L6-cos.tar.gz -O
+$ curl https://storage.googleapis.com/semi-technologies-public-data/weaviate-wikipedia-1.13.2.tar.gz -o weaviate-wikipedia-1.13.2.tar.gz
 # untar the backup (112G unpacked)
-$ tar -xvzf weaviate-1.8.0-rc.2-backup-wikipedia-py-en-multi-qa-MiniLM-L6-cos.tar.gz
+$ tar -xvzf weaviate-wikipedia-1.13.2.tar.gz
 # get the unpacked directory
 $ echo $(pwd)/var/weaviate
 # use the above result (e.g., /home/foobar/var/weaviate)
