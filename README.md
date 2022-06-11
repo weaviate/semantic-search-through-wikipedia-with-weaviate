@@ -39,7 +39,7 @@ Additional links:
 | Paragaphs imported | `280.86.917` | 
 | Graph cross references | `125.447.595` |
 | Wikipedia version | `truthy May 15th, 2022` | 
-| Machine for inference | `12 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
+| Machine for inference | `18 CPU – 100 GB RAM – 250Gb SSD – 1 x NVIDIA Tesla P4` |  
 | Weaviate version | `v1.13.2` |
 | Dataset size | `122GB` |
 
