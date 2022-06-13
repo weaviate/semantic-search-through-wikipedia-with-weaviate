@@ -4,4 +4,6 @@
 
 If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com/semi-technologies/weaviate/stargazers) or joining our [Slack](https://join.slack.com/t/weaviate/shared_invite/zt-goaoifjr-o8FuVz9b1HLzhlUfyfddhw) is appreciated.
 
-* [Semantic search through Wikipedia tutorial](https://developers/weaviate/current/tutorials/semantic-search-through-wikipedia.html)
+### Link to the Tutorial
+
+* [Semantic search through Wikipedia tutorial](https://weaviate.io/developers/weaviate/current/tutorials/semantic-search-through-wikipedia.html)
