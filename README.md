@@ -6,4 +6,4 @@ If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com
 
 ### Link to the Tutorial
 
-* [Semantic search through Wikipedia tutorial](https://weaviate.io/developers/weaviate/current/tutorials/semantic-search-through-wikipedia.html)
+* [Semantic search through Wikipedia tutorial]([https://weaviate.io/developers/weaviate/current/tutorials/semantic-search-through-wikipedia.html](https://weaviate.io/blog/semantic-search-with-wikipedia-and-weaviate))
