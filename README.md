@@ -7,4 +7,3 @@ If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com
 ### Link to the Tutorial
 
 * [Semantic search through Wikipedia tutorial](https://weaviate.io/blog/semantic-search-with-wikipedia-and-weaviate)
-* [Try it out in the Weaviate console](https://link.weaviate.io/3Icl3dE)
