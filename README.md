@@ -7,3 +7,4 @@ If you like what you see, a ⭐ on the [Weaviate Github repo](https://github.com
 ### Link to the Tutorial
 
 * [Semantic search through Wikipedia tutorial](https://weaviate.io/blog/semantic-search-with-wikipedia-and-weaviate)
+* [Detailed installation in the old readme file](https://github.com/weaviate/semantic-search-through-wikipedia-with-weaviate/blob/1870421bd11f22a33c478833fbbca6638923a113/README.md#step-3-load-from-backup)
